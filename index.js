@@ -44,6 +44,8 @@ const runAPI = async () => {
         species,
       } = await getCharacters(people);
 
+      const { name: planetName } = await getPlanets(homeworld);
+
       var newSpeciesData = [];
       for await (speciesObj of species) {
         const { name, average_height, language } = await getSpecies(speciesObj);
@@ -62,7 +64,7 @@ const runAPI = async () => {
           skin_color,
           eye_color,
           height,
-          homeworld,
+          homeworld: planetName,
           species: newSpeciesData,
         },
       ];
@@ -78,6 +80,7 @@ const runAPI = async () => {
     }
 
     response.data.push({ ...data });
+    console.log(JSON.stringify(data));
   }
 
   console.log(JSON.stringify(response));
