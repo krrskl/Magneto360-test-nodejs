@@ -46,7 +46,7 @@ const runAPI = async () => {
 
       var newSpeciesData = [];
       for await (speciesObj of species) {
-        const { name, average_height, language } = getSpecies(speciesObj);
+        const { name, average_height, language } = await getSpecies(speciesObj);
         newSpeciesData = [
           ...newSpeciesData,
           { name, average_height, language },
